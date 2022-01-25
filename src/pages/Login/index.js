@@ -1,9 +1,10 @@
 import { useState } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 import './styles.css'
 
 const Login = ({ setUser }) => {
     const [username, setUsername] = useState('')
+    const navigate = useNavigate()
 
     const handleChange = e => {
         setUsername(e.target.value)
@@ -13,6 +14,10 @@ const Login = ({ setUser }) => {
         e.preventDefault()
 
         setUser(username)
+
+        // we can use useNavigate from RR to redirect our users to a different page/component
+        // do not forget the forward slash in front of path in navigate
+        navigate('/pokemon/list')
     }
 
     // console.log('props', setUser())
